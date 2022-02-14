@@ -12,8 +12,8 @@ import SwiftUI
 class FloatingLabelTextFieldNotifier: ObservableObject {
     
     //MARK: Views Properties
-    @Published var leftView: AnyView?
-    @Published var rightView: AnyView?
+    var makeLeftView: (() -> AnyView)? // function so that it uses latest state
+    var makeRightView: (() -> AnyView)? // function so that it uses latest state
     
     //MARK: Alignment Properties
     @Published var textAlignment: TextAlignment = .leading

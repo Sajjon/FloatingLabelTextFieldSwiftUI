@@ -153,13 +153,13 @@ public struct FloatingLabelTextField: View {
                 
                 HStack {
                     // Left View
-                    notifier.leftView
+                    notifier.makeLeftView?()
                     
                     // Center View
                     centerTextFieldView
                     
                     //Right View
-                    notifier.rightView
+                    notifier.makeRightView?()
                 }
             }
             
@@ -190,14 +190,14 @@ extension FloatingLabelTextField {
 @available(iOS 13.0, *)
 extension FloatingLabelTextField {
     /// Sets the left view.
-    public func leftView<LRView: View>(@ViewBuilder _ view: @escaping () -> LRView) -> Self {
-        notifier.leftView = AnyView(view())
+    public func leftView<LeftView: View>(@ViewBuilder _ makeLeftView: @escaping () -> LeftView) -> Self {
+        notifier.makeLeftView = { AnyView(makeLeftView()) }
         return self
     }
     
     /// Sets the right view.
-    public func rightView<LRView: View>(@ViewBuilder _ view: @escaping () -> LRView) -> Self {
-        notifier.rightView = AnyView(view())
+    public func rightView<RightView: View>(@ViewBuilder _ makeRightView: @escaping () -> RightView) -> Self {
+        notifier.makeRightView = { AnyView(makeRightView()) }
         return self
     }
 }

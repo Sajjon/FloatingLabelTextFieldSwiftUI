@@ -113,6 +113,7 @@ struct ContentView: View {
             .addDisableEditingAction([.all])
             .isShowError(true)
             .isRequiredField(true, with: "Password field is required")
+            .leftView({ Text("#\(password.count)") })
             .rightView({
                 Button(action: {
                     withAnimation {

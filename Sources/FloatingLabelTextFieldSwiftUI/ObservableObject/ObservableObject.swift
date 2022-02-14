@@ -45,7 +45,7 @@ class FloatingLabelTextFieldNotifier: ObservableObject {
     @Published var allowsHitTesting: Bool = true
     
     //MARK: Error Properties
-    @Published var isShowError: Bool = false
+    @Published var shouldDisplayValidationErrorMessage: Bool = false
     @Published var errorColor: Color = .red
     @Published var arrValidator: [TextFieldValidator] = []
     @Published var isRequiredField: Bool = false

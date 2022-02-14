@@ -51,7 +51,7 @@ struct ContentView: View {
                     
                 }
                 .addDisableEditingAction([.all])
-                .isShowError(true)
+                .shouldDisplayValidationErrorMessage(true)
                 .addValidations([.init(condition: firstName.isValid(.alphabet), errorMessage: "Invalid Name"),
                                  .init(condition: firstName.count >= 2, errorMessage: "Minimum two character long")
                 ])
@@ -66,7 +66,7 @@ struct ContentView: View {
                     
                 }
                 .addDisableEditingAction([.paste])
-                .isShowError(true)
+                .shouldDisplayValidationErrorMessage(true)
                 .addValidations([.init(condition: lastName.isValid(.alphabet), errorMessage: "Invalid Name"),
                                  .init(condition: lastName.count >= 2, errorMessage: "Minimum two character long")
                 ])
@@ -101,7 +101,7 @@ struct ContentView: View {
             }
             .addValidations([.init(condition: email.isValid(.email), errorMessage: "Invalid Email")
             ])
-            .isShowError(true)
+            .shouldDisplayValidationErrorMessage(true)
             .keyboardType(.emailAddress)
             .modifier(ThemeTextField())
             
@@ -111,7 +111,8 @@ struct ContentView: View {
                 
             }
             .addDisableEditingAction([.all])
-            .isShowError(true)
+            .shouldDisplayValidationErrorMessage(true)
+            .addValidation(.init(condition: password.count > 4, errorMessage: "Password must be longer than 4"))
             .isRequiredField(true, with: "Password field is required")
             .leftView({ Text("#\(password.count)") })
             .rightView({

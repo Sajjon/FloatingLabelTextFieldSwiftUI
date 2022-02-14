@@ -198,7 +198,7 @@ struct ContentView: View {
 
 ### Error Message & Validation
 
-FloatingLableTextFieldSwiftUI supports displaying an error and add text field validations. This can be helpfull for adding validation on your form text field. To enable isShowError property to true and pass text field validations array to text field with message according condition. You can also add validation checker variable to check is text field is valid or not on submit button action.
+FloatingLableTextFieldSwiftUI supports displaying an error and add text field validations. This can be helpfull for adding validation on your form text field. To enable shouldDisplayValidationErrorMessage property to true and pass text field validations array to text field with message according condition. You can also add validation checker variable to check is text field is valid or not on submit button action.
 
 FloatingLabelTextFieldSwiftUI also have some inbuilt validation regex checker fields like email, password, name, number.. etc. 
 
@@ -224,7 +224,7 @@ struct ContentView: View {
                 
             }
             .addValidation(.init(condition: email.isValid(.email), errorMessage: "Invalid Email")) /// Sets the validation condition.
-                .isShowError(true) /// Sets the is show error message.
+                .shouldDisplayValidationErrorMessage(true) /// Sets the is show error message.
                 .errorColor(.red) /// Sets the error color.
                 .keyboardType(.emailAddress)
                 .frame(height: 70)
@@ -266,7 +266,7 @@ struct ContentView: View {
         }) {
             
         }
-        .isShowError(true) /// Sets the is show error message.
+        .shouldDisplayValidationErrorMessage(true) /// Sets the is show error message.
         .addValidations([.init(condition: lastName.isValid(.alphabet), errorMessage: "Invalid Name"),
                          .init(condition: lastName.count >= 2, errorMessage: "Minimum two character long")
         ]) /// Sets the validation conditions.

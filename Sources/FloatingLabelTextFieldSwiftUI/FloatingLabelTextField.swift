@@ -24,11 +24,11 @@ public struct FloatingLabelTextField: View {
     @Binding private var validationChecker: Bool
     
     private var currentError: TextFieldValidator {
-        if notifier.isRequiredField && isShowError && textFieldValue.isEmpty {
+        if notifier.isRequiredField && isShowError && textFieldValue.isEmpty, !isSelected {
             return TextFieldValidator(condition: false, errorMessage: notifier.requiredFieldMessage)
         }
         
-        if let firstError = notifier.arrValidator.filter({!$0.condition}).first {
+        if let firstError = notifier.arrValidator.filter({!$0.condition}).first, !isSelected {
             return firstError
         }
         return TextFieldValidator(condition: true, errorMessage: "")

@@ -21,7 +21,7 @@ public struct FloatingLabelTextField: View {
     //MARK: Binding Property
     @Binding private var textFieldValue: String
     @State fileprivate var isSelected: Bool = false
-    @Binding private var validtionChecker: Bool
+    @Binding private var validationChecker: Bool
     
     private var currentError: TextFieldValidator {
         if notifier.isRequiredField && isShowError && textFieldValue.isEmpty {
@@ -47,12 +47,12 @@ public struct FloatingLabelTextField: View {
     private var commit: () -> () = { }
     
     //MARK: Init
-    public init(_ text: Binding<String>, validtionChecker: Binding<Bool>? = nil, placeholder: String = "", editingChanged: @escaping (Bool)->() = { _ in }, commit: @escaping ()->() = { }) {
+    public init(_ text: Binding<String>, validationChecker: Binding<Bool>? = nil, placeholder: String = "", editingChanged: @escaping (Bool)->() = { _ in }, commit: @escaping ()->() = { }) {
         self._textFieldValue = text
         self.placeholderText = placeholder
         self.editingChanged = editingChanged
         self.commit = commit
-        self._validtionChecker = validtionChecker ?? Binding.constant(false)
+        self._validationChecker = validationChecker ?? Binding.constant(false)
     }
     
     // MARK: Center View
@@ -71,7 +71,7 @@ public struct FloatingLabelTextField: View {
                 }
                 .onTapGesture {
                     self.isShowError = self.notifier.isRequiredField
-                    self.validtionChecker = self.currentError.condition
+                    self.validationChecker = self.currentError.condition
                     self.editingChanged(self.isSelected)
                     if !self.isSelected {
                         UIResponder.currentFirstResponder?.resignFirstResponder()
@@ -85,7 +85,7 @@ public struct FloatingLabelTextField: View {
                             currentTextField.addAction(for: .editingDidEnd) {
                                 self.isSelected = false
                                 self.isShowError = self.notifier.isRequiredField
-                                self.validtionChecker = self.currentError.condition
+                                self.validationChecker = self.currentError.condition
                                 self.commit()
                                 arrTextFieldEditActions = []
                             }
@@ -104,13 +104,13 @@ public struct FloatingLabelTextField: View {
                         self.isSelected = isChanged
                     }
                     
-                    self.validtionChecker = self.currentError.condition
+                    self.validationChecker = self.currentError.condition
                     self.editingChanged(isChanged)
                     self.isShowError = self.notifier.isRequiredField
                     arrTextFieldEditActions = self.notifier.arrTextFieldEditActions
                 }, onCommit: {
                     self.isShowError = self.notifier.isRequiredField
-                    self.validtionChecker = self.currentError.condition
+                    self.validationChecker = self.currentError.condition
                     self.commit()
                     arrTextFieldEditActions = []
                 })

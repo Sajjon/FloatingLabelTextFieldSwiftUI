@@ -45,7 +45,7 @@ struct ContentView: View {
         VStack {
             
             HStack(spacing: 20) {
-                FloatingLabelTextField($firstName, validtionChecker: $isValidFirstName, placeholder: "First Name", editingChanged: { (isChanged) in
+                FloatingLabelTextField($firstName, validationChecker: $isValidFirstName, placeholder: "First Name", editingChanged: { (isChanged) in
                     
                 }) {
                     
@@ -60,7 +60,7 @@ struct ContentView: View {
                 .modifier(ThemeTextField())
                 
                 
-                FloatingLabelTextField($lastName, validtionChecker: $isValidLastName, placeholder: "Last Name", editingChanged: { (isChanged) in
+                FloatingLabelTextField($lastName, validationChecker: $isValidLastName, placeholder: "Last Name", editingChanged: { (isChanged) in
                     
                 }) {
                     
@@ -94,7 +94,7 @@ struct ContentView: View {
             .addDisableEditingAction([.paste])
             .keyboardType(.phonePad)
             .modifier(ThemeTextField())
-            FloatingLabelTextField($email, validtionChecker: $isValidEmail, placeholder: "Email", editingChanged: { (isChanged) in
+            FloatingLabelTextField($email, validationChecker: $isValidEmail, placeholder: "Email", editingChanged: { (isChanged) in
                 
             }) {
                 

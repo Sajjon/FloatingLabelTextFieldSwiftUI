@@ -218,7 +218,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            FloatingLabelTextField($email, validtionChecker: $isValidEmail, placeholder: "Email", editingChanged: { (isChanged) in
+            FloatingLabelTextField($email, validationChecker: $isValidEmail, placeholder: "Email", editingChanged: { (isChanged) in
                 
             }) {
                 
